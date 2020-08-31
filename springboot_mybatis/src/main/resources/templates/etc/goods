@@ -1,0 +1,11 @@
+g_code			String
+g_name			String
+g_price			int
+g_seller_id		String
+g_reg_date		Date
+
+	private String goodsCode;
+	private String goodsName;
+	private String goodsPrice;
+	private String goodsSellerId;
+	private String goodsRegDate;

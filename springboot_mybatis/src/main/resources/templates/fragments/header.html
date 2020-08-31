@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	
+	
+	<!-- start header -->
+	<div id="header" th:fragment="headerFragment">
+		<!-- 
+		
+			${session.SID == null}로그인x
+			${session.SID != null}로그인o
+			관리자
+			${session.SLEVEL == 1}	
+			판매자
+			${session.SLEVEL == 2}
+			구매자
+			${session.SLEVEL == 3}	
+		
+			비회원(로그인전) : 회원가입, 로그인
+			
+			권한별 메뉴 세팅을 어떻게 할까???
+			관리자 : 모든메뉴, 로그아웃
+			판매자 : 상품등록, 상품검색, 로그아웃
+			구매자 : 상품검색, 로그아웃
+			
+			thymeleaf eq == ne !=
+			mybatis  eq == neq !=
+		 -->
+		
+		
+		header.html<br>
+		상단메뉴<br><br>
+		<a href="/addMember" th:if="${session.SID eq null || session.SLEVEL eq 1}">01회원가입</a>	
+		<a href="/getMemberList" th:if="${session.SLEVEL eq 1}">02전체회원</a>	
+		<a href="/addGoods" th:if="${session.SLEVEL eq 1 || session.SLEVEL eq 2}">03상품등록</a>	
+		<a href="/goodsList" th:unless="${session.SID eq null}">04상품검색</a>
+		<a href="/login" th:if="${session.SID eq null}">05로그인</a>
+		<a href="/logout" th:unless="${session.SID eq null}">06로그아웃</a><br>
+		<a href="/getLoginHistory" th:if="${session.SLEVEL eq 1}">07로그인 이력</a><br>
+		
+		
+		<h4 th:text="${session.SNAME}"></h4>님이 로그인중입니다.
+	</div>
+	<!-- end header -->	
+	
+</html>
